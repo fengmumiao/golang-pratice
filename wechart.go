@@ -138,6 +138,10 @@ func StartClient(tcpaddr string)  {
 	}
 }
 
+//参数说明：
+//  启动服务器端：  Chat server [port]             eg: Chat server 9090
+//  启动客户端：    Chat client [Server Ip Addr]:[Server Port]    eg: Chat client 192.168.0.74:9090
+//
 func main()  {
 	if len(os.Args)!=3 {
 		fmt.Println("Wrong pare")
