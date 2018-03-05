@@ -41,14 +41,17 @@ func makeTreeCore(index int, data map[int]map[int]*ArticleClass) []*ArticleClass
 func main()  {
 	var sByte =[]byte(`[{"id":1,"name":"\u7535\u8111","pid":0},{"id":2,"name":"\u624b\u673a","pid":0},{"id":3,"name":"\u7b14\u8bb0\u672c","pid":1},{"id":4,"name":"\u53f0\u5f0f\u673a","pid":1},{"id":5,"name":"\u667a\u80fd\u673a","pid":2},{"id":6,"name":"\u529f\u80fd\u673a","pid":2},{"id":7,"name":"\u8d85\u7ea7\u672c","pid":3},{"id":8,"name":"\u6e38\u620f\u672c","pid":3}]`)
 	//var sByte =[]byte(`{"id":1,"name":"\u7535\u8111","pid":0}`)
-	var dianqi = new([]*ArticleClass)
+	var dianqi = make([]*ArticleClass, 0)
+	//var dianqi = new(ArticleClass)
 	err := json.Unmarshal(sByte, &dianqi)
 	if err != nil {
 		fmt.Errorf("Can not decode data: %v\n", err)
 	}
-	fmt.Printf("%v\n", dianqi)
-	var list []*ArticleClass
-	data := buildData(list)
+	fmt.Printf("%s\n", dianqi[0].ParentId)
+
+
+	//var list []*ArticleClass
+	data := buildData(dianqi)
 	result := makeTreeCore(0, data)
-	fmt.Println(result)
+	fmt.Println("%s\n", result[0].List[0].Name)
 }
